@@ -1,0 +1,41 @@
+---- USERS 테이블 데이터
+--INSERT INTO USERS(user_id,user_name,user_type,user_stat) VALUES (1, 이수경, 일반, 탈퇴);
+--INSERT INTO USERS(user_id,user_name,user_type,user_stat) VALUES (2, 최상면, 기업회원, 정상);
+--INSERT INTO USERS(user_id,user_name,user_type,user_stat) VALUES (3, 강재석, 일반, 정상);
+--INSERT INTO USERS(user_id,user_name,user_type,user_stat) VALUES (4, 김구현, 일반, 정상);
+--
+---- ITEMS 데이터 데이터
+--INSERT INTO ITEMS(item_id,item_name,item_type,item_price,item_display_start_date,item_display_end_date)
+--    VALUES (1,'노브랜드 버터링',일반,20000,'2022-01-01','2023-01-01');
+--INSERT INTO ITEMS(seq,item_name,item_type,item_price,item_display_start_date,item_display_end_date)
+--    VALUES (2,'매일 아침 우유',일반,1000,'2022-01-01','2023-05-05');
+--INSERT INTO ITEMS(seq,item_name,item_type,item_price,item_display_start_date,item_display_end_date)
+--    VALUES (3,'노브랜드 버터링',기업회원상품,40000,'2020-01-01','2023-12-31');
+--INSERT INTO ITEMS(seq,item_name,item_type,item_price,item_display_start_date,item_display_end_date)
+--    VALUES (4,'노브랜드 버터링',일반,15000,'2021-01-01','2021-08-01');
+--INSERT INTO ITEMS(seq,item_name,item_type,item_price,item_display_start_date,item_display_end_date)
+--    VALUES (5,'노브랜드 버터링',일반,30000,'2022-12-24','2022-12-31');
+--
+---- PROMOTION 테이블 데이터
+--INSERT INTO PROMOTIONS(promotion_id,item_id,promotion_nm,discount_amount,discount_rate, promotion_start_date,promotion_end_date)
+--    VALUES (1,1,'2022 쓱데이',1000,null,'2022-05-01','2022-07-01');
+--INSERT INTO PROMOTIONS(promotion_id,item_id,promotion_nm,discount_amount,discount_rate, promotion_start_date,promotion_end_date)
+--    VALUES (1,2,'2022 쓱데이',1000,null,'2022-05-01','2022-07-01');
+--INSERT INTO PROMOTIONS(promotion_id,item_id,promotion_nm,discount_amount,discount_rate, promotion_start_date,promotion_end_date)
+--    VALUES (1,3,'2022 쓱데이',1000,null,'2022-05-01','2022-07-01');
+--INSERT INTO PROMOTIONS(promotion_id,item_id,promotion_nm,discount_amount,discount_rate, promotion_start_date,promotion_end_date)
+--    VALUES (1,4,'2022 쓱데이',1000,null,'2022-05-01','2022-07-01');
+--INSERT INTO PROMOTIONS(promotion_id,item_id,promotion_nm,discount_amount,discount_rate, promotion_start_date,promotion_end_date)
+--    VALUES (1,5,'2022 쓱데이',1000,null,'2022-05-01','2022-07-01');
+--
+--INSERT INTO PROMOTIONS(promotion_id,item_id,promotion_nm,discount_amount,discount_rate, promotion_start_date,promotion_end_date)
+--    VALUES (2,4,'스타벅스몰 오픈기념',null,0.05,'2021-01-05','2022-12-31');
+--
+--INSERT INTO PROMOTIONS(promotion_id,item_id,promotion_nm,discount_amount,discount_rate, promotion_start_date,promotion_end_date)
+--    VALUES (3,1,'2022 쓱데이',1000,null,'2022-05-01','2022-07-01');
+--INSERT INTO PROMOTIONS(promotion_id,item_id,promotion_nm,discount_amount,discount_rate, promotion_start_date,promotion_end_date)
+--    VALUES (3,2,'2022 쓱데이',1000,null,'2022-05-01','2022-07-01');
+--INSERT INTO PROMOTIONS(promotion_id,item_id,promotion_nm,discount_amount,discount_rate, promotion_start_date,promotion_end_date)
+--    VALUES (3,3,'2022 쓱데이',1000,null,'2022-05-01','2022-07-01');
+--
+--
