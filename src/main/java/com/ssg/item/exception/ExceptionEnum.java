@@ -4,7 +4,11 @@ import lombok.Getter;
 
 @Getter
 public enum ExceptionEnum {
-    USER_NOT_FOUND("user-0001", "해당하는 유저가 없다.");
+    USER_NOT_FOUND("user-0001", "해당하는 유저가 없다."),
+    USER_TYPE_NOT_FOUND("user-0002", "잘못된 유저 타입이다."),
+    USER_STAT_NOT_FOUND("user-0003", "잘못된 유저 스탯이다."),
+
+    ARGUMENT_NOT_VALID("common-0001", "");
 
     private String code;
     private String message;
