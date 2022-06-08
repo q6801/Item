@@ -8,7 +8,8 @@ public enum ExceptionEnum {
     USER_TYPE_NOT_FOUND("user-0002", "잘못된 유저 타입이다."),
     USER_STAT_NOT_FOUND("user-0003", "잘못된 유저 스탯이다."),
 
-    ARGUMENT_NOT_VALID("common-0001", "");
+    ARGUMENT_NOT_VALID("common-0001", ""),
+    ITEM_NOT_FOUND("common-0002", "해당하는 상품이 없다.");
 
     private String code;
     private String message;
