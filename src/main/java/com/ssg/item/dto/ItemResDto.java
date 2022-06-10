@@ -1,11 +1,13 @@
 package com.ssg.item.dto;
 
 import com.ssg.item.enums.ItemType;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 import java.sql.Timestamp;
 
 @Getter
+@EqualsAndHashCode
 public class ItemResDto {
     private long id;
     private String name;
@@ -20,6 +22,6 @@ public class ItemResDto {
         this.itemType = itemType;
         this.itemPrice = itemPrice;
         this.itemDisplayStartDate = itemDisplayStartDate;
-        this.itemDisplayEndDate = getItemDisplayEndDate();
+        this.itemDisplayEndDate = itemDisplayEndDate;
     }
 }
