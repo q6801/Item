@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -41,7 +42,7 @@ public class Item {
     private Timestamp itemDisplayEndDate;
 
     @OneToMany(mappedBy = "item", fetch = FetchType.LAZY)
-    private List<PromotionItem> promotionItems;
+    private List<PromotionItem> promotionItems = new ArrayList<>();
 
     public Item(String name, ItemType itemType, int itemPrice, Timestamp itemDisplayStartDate, Timestamp itemDisplayEndDate) {
         this.name = name;
