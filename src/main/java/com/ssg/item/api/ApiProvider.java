@@ -18,7 +18,6 @@ public class ApiProvider {
     }
 
     public static<T> ApiResult<T> error(CustomRuntimeException exception) {
-        ExceptionEnum exceptionEnum = exception.getExceptionEnum();
-        return error(exceptionEnum.getCode(), exceptionEnum.getMessage());
+        return error(exception.getCode(), exception.getMessage());
     }
 }

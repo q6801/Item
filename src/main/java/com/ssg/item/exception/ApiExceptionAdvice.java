@@ -18,7 +18,7 @@ public class ApiExceptionAdvice {
     @ExceptionHandler({CustomRuntimeException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ApiResult<?> exceptionHandler(CustomRuntimeException ex) {
-        log.error("{} : {}" , ex.getExceptionEnum(), ex.getMessage());
+        log.error("{} : {}" , ex.getCode(), ex.getMessage());
         return ApiProvider.error(ex);
     }
 
