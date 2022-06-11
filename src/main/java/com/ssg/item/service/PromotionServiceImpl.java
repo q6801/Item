@@ -26,4 +26,10 @@ public class PromotionServiceImpl implements PromotionService {
                 .orElseThrow(() -> new CustomRuntimeException(ExceptionEnum.PROMOTION_NOT_FOUND));
         promotionRepository.delete(promotion);
     }
+
+    @Override
+    public Promotion findById(long promotionId) {
+        return promotionRepository.findById(promotionId)
+                .orElseThrow(() -> new CustomRuntimeException(ExceptionEnum.PROMOTION_NOT_FOUND));
+    }
 }
