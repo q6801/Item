@@ -4,16 +4,13 @@ import com.ssg.item.api.ApiProvider;
 import com.ssg.item.api.ApiResult;
 import com.ssg.item.dto.ItemDto;
 import com.ssg.item.dto.ItemResDto;
-import com.ssg.item.dto.UserDto;
-import com.ssg.item.dto.UserResDto;
 import com.ssg.item.service.ItemService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@Controller
+@RestController
 @RequestMapping("v1")
 @RequiredArgsConstructor
 public class ItemController {

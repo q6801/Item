@@ -21,7 +21,7 @@ public enum ItemType {
     public static ItemType of(String type) {
         return Arrays.stream(ItemType.values())
                 .filter(i -> i.getType().equals(type)).findAny()
-                .orElseThrow(() -> new CustomRuntimeException(ExceptionEnum.USER_STAT_NOT_FOUND));
+                .orElseThrow(() -> new CustomRuntimeException(ExceptionEnum.ITEM_TYPE_NOT_FOUND));
     }
 
     @JsonValue
