@@ -1,6 +1,11 @@
 package com.ssg.item.entity;
 
+import com.ssg.item.dto.PromotionDto;
+import com.ssg.item.dto.PromotionResDto;
+import com.ssg.item.exception.CustomRuntimeException;
+import com.ssg.item.exception.ExceptionEnum;
 import lombok.AccessLevel;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +17,7 @@ import java.util.List;
 @Table(name = "promotions")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@EqualsAndHashCode
 public class Promotion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,4 +38,37 @@ public class Promotion {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "promotion")
     private List<PromotionItem> promotionItems;
+
+    public Promotion(String name, Integer discountAmount, Float discountRate,
+                     Timestamp promotionStartDate, Timestamp promotionEndDate) {
+        this.name = name;
+        this.discountAmount = discountAmount;
+        this.discountRate = discountRate;
+        this.promotionStartDate = promotionStartDate;
+        this.promotionEndDate = promotionEndDate;
+
+        if (promotionStartDate!=null && promotionEndDate!=null &&
+                promotionStartDate.after(promotionEndDate)) {
+            throw new CustomRuntimeException(ExceptionEnum.BAD_PROMOTION_TIME);
+        }
+        if (discountAmount == null && discountRate == null) {
+            throw new CustomRuntimeException(ExceptionEnum.DISCOUNT_NOT_FOUND);
+        }
+    }
+
+    public Promotion(long id, String name, Integer discountAmount, Float discountRate,
+                     Timestamp promotionStartDate, Timestamp promotionEndDate) {
+        this(name, discountAmount, discountRate, promotionStartDate, promotionEndDate);
+        this.id = id;
+    }
+
+    public static Promotion convertDtoToPromotion(PromotionDto promotionDto) {
+        return new Promotion(promotionDto.getName(), promotionDto.getDiscountAmount(), promotionDto.getDiscountRate(),
+                promotionDto.getPromotionStartDate(), promotionDto.getPromotionEndDate());
+    }
+
+    public PromotionResDto convertPromotionToResDto() {
+        return new PromotionResDto(this.name, this.discountAmount, this.discountRate,
+                this.promotionStartDate, this.promotionEndDate);
+    }
 }

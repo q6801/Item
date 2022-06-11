@@ -46,7 +46,7 @@ public class ItemServiceTest {
 
 
     @Test
-    @DisplayName("setUserDto 성공")
+    @DisplayName("setItem 성공")
     public void setItem() {
         Item item = getStubItems().get(0);
         ItemDto inputData = new ItemDto(item.getName(), item.getItemType(), item.getItemPrice(),

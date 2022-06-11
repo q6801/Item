@@ -9,13 +9,13 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 public class UserDto {
-    @NotBlank
+    @NotBlank(message = "유저의 이름은 빈 값일 수 없습니다.")
     private String name;
 
-    @NotNull
+    @NotNull(message = "유저의 타입은 널값일 수 없습니다.")
     private UserType userType;
 
-    @NotNull
+    @NotNull(message = "유저의 스탯은 널값일 수 없습니다.")
     private UserStat userStat;
 
     public UserDto(String name, UserType userType, UserStat userStat) {
