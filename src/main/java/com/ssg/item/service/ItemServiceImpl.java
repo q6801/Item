@@ -26,8 +26,13 @@ public class ItemServiceImpl implements ItemService{
     @Override
     @Transactional
     public void deleteItem(long itemId) {
-        Item item = itemRepository.findById(itemId)
-                .orElseThrow(() -> new CustomRuntimeException(ExceptionEnum.ITEM_NOT_FOUND));
+        Item item = findById(itemId);
         itemRepository.delete(item);
+    }
+
+    @Override
+    public Item findById(long itemId) {
+        return itemRepository.findById(itemId)
+                .orElseThrow(() -> new CustomRuntimeException(ExceptionEnum.ITEM_NOT_FOUND));
     }
 }
