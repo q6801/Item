@@ -3,7 +3,10 @@ package com.ssg.item.service;
 import com.ssg.item.dto.ItemDto;
 import com.ssg.item.dto.ItemResDto;
 import com.ssg.item.entity.Item;
+import com.ssg.item.entity.User;
 import com.ssg.item.enums.ItemType;
+import com.ssg.item.enums.UserStat;
+import com.ssg.item.enums.UserType;
 import com.ssg.item.exception.CustomRuntimeException;
 import com.ssg.item.repository.ItemRepository;
 import org.assertj.core.api.Assertions;
@@ -24,6 +27,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
@@ -37,6 +41,8 @@ public class ItemServiceTest {
 
     @Mock
     private ItemRepository itemRepository;
+    @Mock
+    private UserService userService;
 
     @BeforeAll
     public static void setUp() {
@@ -95,6 +101,30 @@ public class ItemServiceTest {
         }
     }
 
+    @Test
+    @DisplayName("get buyable item 성공")
+    public void getBuyableItem() {
+        User normalUser = getStubUsers().get(0);
+        User withdrawalUser = getStubUsers().get(1);
+        User corporateUser = getStubUsers().get(2);
+        given(userService.findById(normalUser.getId())).willReturn(normalUser);
+        given(userService.findById(withdrawalUser.getId())).willReturn(withdrawalUser);
+        given(userService.findById(corporateUser.getId())).willReturn(corporateUser);
+        given(itemRepository.findBuyableItem(ItemType.NORMAL_ITEM))
+                .willReturn(getStubItems().stream().filter(i -> i.getItemType().equals(ItemType.NORMAL_ITEM)).collect(Collectors.toList()));
+        given(itemRepository.findBuyableItem())
+                .willReturn(getStubItems());
+
+        List<ItemResDto> buyableItems0 = itemService.getBuyableItem(normalUser.getId());
+        List<ItemResDto> buyableItems1 = itemService.getBuyableItem(withdrawalUser.getId());
+        List<ItemResDto> buyableItems2 = itemService.getBuyableItem(corporateUser.getId());
+
+
+        assertThat(buyableItems0.size()).isEqualTo(1);
+        assertThat(buyableItems1.size()).isEqualTo(0);
+        assertThat(buyableItems2.size()).isEqualTo(2);
+    }
+
     private List<Item> getStubItems() {
         Timestamp time0 = Timestamp.valueOf(LocalDateTime.now().withNano(0));
         Timestamp time1 = Timestamp.valueOf(LocalDateTime.now().plusMonths(1).withNano(0));
@@ -105,5 +135,13 @@ public class ItemServiceTest {
         items.add(new Item(0, "name0", ItemType.NORMAL_ITEM, 100, time0, time1));
         items.add(new Item(1, "name1", ItemType.CORPORATE_USER_ITEM, 200, time2, time3));
         return items;
+    }
+
+    private List<User> getStubUsers() {
+        List<User> users = new ArrayList<>();
+        users.add(new User(0, "name0", UserType.NORMAL_USER, UserStat.NORMAL));
+        users.add(new User(1, "name1", UserType.CORPORATE_USER, UserStat.WITHDRAWAL));
+        users.add(new User(2, "name1", UserType.CORPORATE_USER, UserStat.NORMAL));
+        return users;
     }
 }
