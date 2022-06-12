@@ -10,6 +10,10 @@ spring:
     username: sa
     password:
   jpa:
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: Asia/Seoul
     hibernate:
       ddl-auto: create
     defer-datasource-initialization: true
