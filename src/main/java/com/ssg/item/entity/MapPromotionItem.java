@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Table(name = "map_promotions_items")
-public class PromotionItem {
+public class MapPromotionItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -26,17 +26,17 @@ public class PromotionItem {
 
     public void setItem(Item item) {
         if(this.item != null) {
-            this.item.getPromotionItems().remove(this);
+            this.item.getMapPromotionItems().remove(this);
         }
         this.item = item;
-        item.getPromotionItems().add(this);
+        item.getMapPromotionItems().add(this);
     }
 
     public void setPromotion(Promotion promotion) {
         if(this.promotion != null) {
-            this.promotion.getPromotionItems().remove(this);
+            this.promotion.getMapPromotionItems().remove(this);
         }
         this.promotion = promotion;
-        promotion.getPromotionItems().add(this);
+        promotion.getMapPromotionItems().add(this);
     }
 }

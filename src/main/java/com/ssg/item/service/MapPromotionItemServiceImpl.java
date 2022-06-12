@@ -1,13 +1,13 @@
 package com.ssg.item.service;
 
-import com.ssg.item.dto.PromotionItemDto;
+import com.ssg.item.dto.MapPromotionItemDto;
 import com.ssg.item.entity.Item;
 import com.ssg.item.entity.Promotion;
-import com.ssg.item.entity.PromotionItem;
+import com.ssg.item.entity.MapPromotionItem;
 import com.ssg.item.exception.CustomRuntimeException;
 import com.ssg.item.exception.ExceptionEnum;
 import com.ssg.item.repository.ItemRepository;
-import com.ssg.item.repository.PromotionItemRepository;
+import com.ssg.item.repository.MapPromotionItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,33 +15,33 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
-public class PromotionItemServiceImpl implements PromotionItemService {
-    private final PromotionItemRepository promotionItemRepository;
+public class MapPromotionItemServiceImpl implements MapPromotionItemService {
+    private final MapPromotionItemRepository mapPromotionItemRepository;
     private final PromotionService promotionService;
     private final ItemRepository itemRepository;
     private final ItemService itemService;
 
     @Override
     @Transactional
-    public void setPromotionItem(PromotionItemDto promotionItemDto) {
-        long promotionId = promotionItemDto.getPromotionId();
-        String[] itemId = promotionItemDto.getItemIds().split(",");
+    public void setPromotionItem(MapPromotionItemDto mapPromotionItemDto) {
+        long promotionId = mapPromotionItemDto.getPromotionId();
+        String[] itemId = mapPromotionItemDto.getItemIds().split(",");
         Promotion promotion = promotionService.findById(promotionId);
         
         for(String id : itemId) {
             isNumeric(id);
             Item item = findItemById(id);
-            if(promotionItemRepository.findByItemAndPromotion(item, promotion).isPresent()) continue;   // 중복 시 제거
-            PromotionItem promotionItem = setPromotionItem(promotion, item);
-            promotionItemRepository.save(promotionItem);
+            if(mapPromotionItemRepository.findByItemAndPromotion(item, promotion).isPresent()) continue;   // 중복 시 제거
+            MapPromotionItem mapPromotionItem = setPromotionItem(promotion, item);
+            mapPromotionItemRepository.save(mapPromotionItem);
         }
     }
 
-    private PromotionItem setPromotionItem(Promotion promotion, Item item) {
-        PromotionItem promotionItem = new PromotionItem();
-        promotionItem.setPromotion(promotion);
-        promotionItem.setItem(item);
-        return promotionItem;
+    private MapPromotionItem setPromotionItem(Promotion promotion, Item item) {
+        MapPromotionItem mapPromotionItem = new MapPromotionItem();
+        mapPromotionItem.setPromotion(promotion);
+        mapPromotionItem.setItem(item);
+        return mapPromotionItem;
     }
 
     private Item findItemById(String id) {
@@ -65,6 +65,6 @@ public class PromotionItemServiceImpl implements PromotionItemService {
     public void deletePromotionItem(long promotionId, long itemId) {
         Promotion promotion = promotionService.findById(promotionId);
         Item item = itemService.findById(itemId);
-        promotionItemRepository.deleteByItemAndPromotion(item, promotion);
+        mapPromotionItemRepository.deleteByItemAndPromotion(item, promotion);
     }
 }
