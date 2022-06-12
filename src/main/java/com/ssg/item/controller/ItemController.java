@@ -4,17 +4,25 @@ import com.ssg.item.api.ApiProvider;
 import com.ssg.item.api.ApiResult;
 import com.ssg.item.dto.ItemDto;
 import com.ssg.item.dto.ItemResDto;
+import com.ssg.item.entity.Item;
 import com.ssg.item.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("v1")
 @RequiredArgsConstructor
 public class ItemController {
     private final ItemService itemService;
+
+    @GetMapping("buyable-item/{userId}")
+    public ApiResult<List<ItemResDto>> getBuyalbeItem(@PathVariable long userId) {
+        List<ItemResDto> buyableItem = itemService.getBuyableItem(userId);
+        return ApiProvider.success(buyableItem);
+    }
 
     @PostMapping("item")
     public ApiResult<ItemResDto> setItem(@Valid @RequestBody ItemDto itemDto) {
