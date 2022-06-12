@@ -30,4 +30,10 @@ public class UserServiceImpl implements UserService{
                 .orElseThrow(() -> new CustomRuntimeException(ExceptionEnum.USER_NOT_FOUND));
         userRepository.delete(user);
     }
+
+    @Override
+    public User findById(long id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new CustomRuntimeException(ExceptionEnum.USER_NOT_FOUND));
+    }
 }
