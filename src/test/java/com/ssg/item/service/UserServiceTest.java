@@ -14,6 +14,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(MockitoExtension.class)
@@ -28,13 +31,20 @@ public class UserServiceTest {
     @Test
     @DisplayName("setUserDto 성공")
     public void setUserDto() {
-        UserDto inputData = new UserDto("name", UserType.NORMAL_USER, UserStat.NORMAL);
-        User user = User.convertDtoToUser(inputData);
-        User savedUser = new User(1, "name", UserType.NORMAL_USER, UserStat.NORMAL);
-        BDDMockito.given(userRepository.save(user)).willReturn(savedUser);
+        User user = getStubUsers().get(0);
+        UserDto inputData = new UserDto(user.getName(), user.getUserType(), user.getUserStat());
+        BDDMockito.given(userRepository.save(user)).willReturn(user);
 
         UserResDto savedUserDto = userService.setUserInfo(inputData);
 
-        assertThat(savedUserDto).isEqualTo(savedUser.convertUserToResDto());
+        assertThat(savedUserDto).isEqualTo(user.convertUserToResDto());
     }
+
+    private List<User> getStubUsers() {
+        List<User> users = new ArrayList<>();
+        users.add(new User(0, "name0", UserType.NORMAL_USER, UserStat.NORMAL));
+        users.add(new User(1, "name1", UserType.CORPORATE_USER, UserStat.WITHDRAWAL));
+        return users;
+    }
+
 }
