@@ -1,10 +1,12 @@
 package com.ssg.item.dto;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 import java.sql.Timestamp;
 
 @Getter
+@EqualsAndHashCode
 public class PromotionResDto {
     private long id;
     private String name;
@@ -13,8 +15,9 @@ public class PromotionResDto {
     private Timestamp promotionStartDate;
     private Timestamp promotionEndDate;
 
-    public PromotionResDto(String name, Integer discountAmount, Float discountRate,
+    public PromotionResDto(long id, String name, Integer discountAmount, Float discountRate,
                         Timestamp promotionStartDate, Timestamp promotionEndDate) {
+        this.id = id;
         this.name = name;
         this.discountAmount = discountAmount;
         this.discountRate = discountRate;

@@ -38,7 +38,7 @@ public class Promotion {
     private Timestamp promotionEndDate;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "promotion")
-    private List<PromotionItem> promotionItems = new ArrayList<>();
+    private List<MapPromotionItem> mapPromotionItems = new ArrayList<>();
 
     public Promotion(String name, Integer discountAmount, Float discountRate,
                      Timestamp promotionStartDate, Timestamp promotionEndDate) {
@@ -69,7 +69,7 @@ public class Promotion {
     }
 
     public PromotionResDto convertPromotionToResDto() {
-        return new PromotionResDto(this.name, this.discountAmount, this.discountRate,
+        return new PromotionResDto(this.id, this.name, this.discountAmount, this.discountRate,
                 this.promotionStartDate, this.promotionEndDate);
     }
 }
