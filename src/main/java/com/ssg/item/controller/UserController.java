@@ -2,9 +2,9 @@ package com.ssg.item.controller;
 
 import com.ssg.item.api.ApiProvider;
 import com.ssg.item.api.ApiResult;
-import com.ssg.item.dto.UserDto;
-import com.ssg.item.dto.UserResDto;
-import com.ssg.item.service.UserService;
+import com.ssg.item.dto.user.UserDto;
+import com.ssg.item.dto.user.UserResDto;
+import com.ssg.item.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

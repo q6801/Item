@@ -1,4 +1,4 @@
-package com.ssg.item.dto;
+package com.ssg.item.dto.user;
 
 import com.ssg.item.enums.UserStat;
 import com.ssg.item.enums.UserType;

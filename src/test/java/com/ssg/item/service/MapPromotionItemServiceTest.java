@@ -1,12 +1,14 @@
 package com.ssg.item.service;
 
-import com.ssg.item.dto.PromotionItemDto;
+import com.ssg.item.dto.mapPromotionItem.MapPromotionItemDto;
 import com.ssg.item.entity.Item;
 import com.ssg.item.entity.Promotion;
 import com.ssg.item.enums.ItemType;
 import com.ssg.item.exception.CustomRuntimeException;
 import com.ssg.item.repository.ItemRepository;
-import com.ssg.item.repository.PromotionItemRepository;
+import com.ssg.item.repository.MapPromotionItemRepository;
+import com.ssg.item.service.mapPromotionItem.MapPromotionItemServiceImpl;
+import com.ssg.item.service.promotion.PromotionService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -31,18 +33,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 
 @ExtendWith(MockitoExtension.class)
-public class PromotionItemServiceTest {
+public class MapPromotionItemServiceTest {
     private static Validator validator;
 
     @InjectMocks
-    private PromotionItemServiceImpl promotionItemService;
+    private MapPromotionItemServiceImpl promotionItemService;
 
     @Mock
     private PromotionService promotionSerice;
     @Mock
     private ItemRepository itemRepository;
     @Mock
-    private PromotionItemRepository promotionItemRepository;
+    private MapPromotionItemRepository mapPromotionItemRepository;
 
     @BeforeAll
     public static void setUp() {
@@ -56,16 +58,16 @@ public class PromotionItemServiceTest {
         Promotion inputPromotion = getStubPromotions().get(0);
         Item inputItem0 = getStubItems().get(0);
         Item inputItem1 = getStubItems().get(1);
-        PromotionItemDto promotionItemDto = new PromotionItemDto(
+        MapPromotionItemDto mapPromotionItemDto = new MapPromotionItemDto(
                 inputPromotion.getId(), inputItem0.getId() + "," + inputItem1.getId());
 
         given(promotionSerice.findById(inputPromotion.getId())).willReturn(inputPromotion);
         given(itemRepository.findById(inputItem0.getId())).willReturn(Optional.of(inputItem0));
         given(itemRepository.findById(inputItem1.getId())).willReturn(Optional.of(inputItem1));
-        given(promotionItemRepository.findByItemAndPromotion(inputItem0, inputPromotion)).willReturn(Optional.empty());
-        given(promotionItemRepository.findByItemAndPromotion(inputItem1, inputPromotion)).willReturn(Optional.empty());
+        given(mapPromotionItemRepository.findByItemAndPromotion(inputItem0, inputPromotion)).willReturn(Optional.empty());
+        given(mapPromotionItemRepository.findByItemAndPromotion(inputItem1, inputPromotion)).willReturn(Optional.empty());
 
-        promotionItemService.setPromotionItem(promotionItemDto);
+        promotionItemService.setPromotionItem(mapPromotionItemDto);
     }
 
     @Test
@@ -74,13 +76,13 @@ public class PromotionItemServiceTest {
         Promotion inputPromotion = getStubPromotions().get(0);
         Item inputItem0 = getStubItems().get(0);
         Item inputItem1 = getStubItems().get(1);
-        PromotionItemDto promotionItemDto = new PromotionItemDto(
+        MapPromotionItemDto mapPromotionItemDto = new MapPromotionItemDto(
                 inputPromotion.getId(), inputItem0.getId() + "," + inputItem1.getId());
 
         given(promotionSerice.findById(inputPromotion.getId())).willReturn(inputPromotion);
         given(itemRepository.findById(inputItem0.getId())).willReturn(Optional.empty());
 
-        Assertions.assertThatThrownBy(() -> promotionItemService.setPromotionItem(promotionItemDto))
+        Assertions.assertThatThrownBy(() -> promotionItemService.setPromotionItem(mapPromotionItemDto))
                 .isInstanceOf(CustomRuntimeException.class);
     }
 
@@ -89,23 +91,23 @@ public class PromotionItemServiceTest {
     public void setPromotionItemWithString() {
         Promotion inputPromotion = getStubPromotions().get(0);
         Item inputItem0 = getStubItems().get(0);
-        PromotionItemDto promotionItemDto = new PromotionItemDto(
+        MapPromotionItemDto mapPromotionItemDto = new MapPromotionItemDto(
                 inputPromotion.getId(), "hi," + inputItem0.getId());
 
         given(promotionSerice.findById(inputPromotion.getId())).willReturn(inputPromotion);
 
-        Assertions.assertThatThrownBy(() -> promotionItemService.setPromotionItem(promotionItemDto))
+        Assertions.assertThatThrownBy(() -> promotionItemService.setPromotionItem(mapPromotionItemDto))
                 .isInstanceOf(CustomRuntimeException.class);
     }
 
     @Test
     @DisplayName("PromotionItemDto의 itemIds에 빈 값 입력")
     public void setPromotionItemDto() {
-        PromotionItemDto promotionItemDto = new PromotionItemDto(1L, "");
-        Set<ConstraintViolation<PromotionItemDto>> validate = validator.validate(promotionItemDto);
+        MapPromotionItemDto mapPromotionItemDto = new MapPromotionItemDto(1L, "");
+        Set<ConstraintViolation<MapPromotionItemDto>> validate = validator.validate(mapPromotionItemDto);
         assertThat(validate.size()).isEqualTo(1);
 
-        for(ConstraintViolation<PromotionItemDto> constraintViolation : validate){
+        for(ConstraintViolation<MapPromotionItemDto> constraintViolation : validate){
             System.out.println(constraintViolation.getMessage());
         }
     }

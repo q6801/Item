@@ -1,10 +1,11 @@
 package com.ssg.item.service;
 
-import com.ssg.item.dto.PromotionDto;
-import com.ssg.item.dto.PromotionResDto;
+import com.ssg.item.dto.promotion.PromotionDto;
+import com.ssg.item.dto.promotion.PromotionResDto;
 import com.ssg.item.entity.Promotion;
 import com.ssg.item.exception.CustomRuntimeException;
 import com.ssg.item.repository.PromotionRepository;
+import com.ssg.item.service.promotion.PromotionServiceImpl;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;

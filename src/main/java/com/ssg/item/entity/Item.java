@@ -1,7 +1,8 @@
 package com.ssg.item.entity;
 
-import com.ssg.item.dto.ItemDto;
-import com.ssg.item.dto.ItemResDto;
+import com.ssg.item.dto.item.ItemDiscountDto;
+import com.ssg.item.dto.item.ItemDto;
+import com.ssg.item.dto.item.ItemResDto;
 import com.ssg.item.enums.ItemType;
 import com.ssg.item.exception.CustomRuntimeException;
 import com.ssg.item.exception.ExceptionEnum;
@@ -42,7 +43,7 @@ public class Item {
     private Timestamp itemDisplayEndDate;
 
     @OneToMany(mappedBy = "item", fetch = FetchType.LAZY)
-    private List<PromotionItem> promotionItems = new ArrayList<>();
+    private List<MapPromotionItem> mapPromotionItems = new ArrayList<>();
 
     public Item(String name, ItemType itemType, int itemPrice, Timestamp itemDisplayStartDate, Timestamp itemDisplayEndDate) {
         this.name = name;
@@ -70,5 +71,10 @@ public class Item {
     public ItemResDto convertItemToResDto() {
         return new ItemResDto(this.id, this.name, this.itemType, this.itemPrice,
                 this.itemDisplayStartDate, this.itemDisplayEndDate);
+    }
+
+    public ItemDiscountDto convertItemToDiscountDto(int discountedPrice) {
+        return new ItemDiscountDto(this.id, this.name, this.itemType, this.itemPrice,
+                discountedPrice, this.itemDisplayStartDate, this.itemDisplayEndDate);
     }
 }
