@@ -1,4 +1,4 @@
-package com.ssg.item.dto;
+package com.ssg.item.dto.promotion;
 
 import com.ssg.item.exception.CustomRuntimeException;
 import com.ssg.item.exception.ExceptionEnum;

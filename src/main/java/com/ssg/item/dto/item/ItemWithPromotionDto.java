@@ -1,5 +1,6 @@
-package com.ssg.item.dto;
+package com.ssg.item.dto.item;
 
+import com.ssg.item.dto.promotion.PromotionResDto;
 import lombok.Getter;
 
 @Getter

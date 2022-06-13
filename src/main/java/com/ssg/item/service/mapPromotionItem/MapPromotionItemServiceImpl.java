@@ -1,6 +1,6 @@
-package com.ssg.item.service;
+package com.ssg.item.service.mapPromotionItem;
 
-import com.ssg.item.dto.MapPromotionItemDto;
+import com.ssg.item.dto.mapPromotionItem.MapPromotionItemDto;
 import com.ssg.item.entity.Item;
 import com.ssg.item.entity.Promotion;
 import com.ssg.item.entity.MapPromotionItem;
@@ -8,6 +8,9 @@ import com.ssg.item.exception.CustomRuntimeException;
 import com.ssg.item.exception.ExceptionEnum;
 import com.ssg.item.repository.ItemRepository;
 import com.ssg.item.repository.MapPromotionItemRepository;
+import com.ssg.item.service.item.ItemService;
+import com.ssg.item.service.mapPromotionItem.MapPromotionItemService;
+import com.ssg.item.service.promotion.PromotionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

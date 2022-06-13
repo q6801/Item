@@ -1,8 +1,8 @@
 package com.ssg.item.entity;
 
-import com.ssg.item.dto.ItemDiscountDto;
-import com.ssg.item.dto.ItemDto;
-import com.ssg.item.dto.ItemResDto;
+import com.ssg.item.dto.item.ItemDiscountDto;
+import com.ssg.item.dto.item.ItemDto;
+import com.ssg.item.dto.item.ItemResDto;
 import com.ssg.item.enums.ItemType;
 import com.ssg.item.exception.CustomRuntimeException;
 import com.ssg.item.exception.ExceptionEnum;

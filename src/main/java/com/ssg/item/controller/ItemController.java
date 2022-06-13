@@ -2,10 +2,10 @@ package com.ssg.item.controller;
 
 import com.ssg.item.api.ApiProvider;
 import com.ssg.item.api.ApiResult;
-import com.ssg.item.dto.ItemDto;
-import com.ssg.item.dto.ItemResDto;
-import com.ssg.item.dto.ItemWithPromotionDto;
-import com.ssg.item.service.ItemService;
+import com.ssg.item.dto.item.ItemDto;
+import com.ssg.item.dto.item.ItemResDto;
+import com.ssg.item.dto.item.ItemWithPromotionDto;
+import com.ssg.item.service.item.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

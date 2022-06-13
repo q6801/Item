@@ -1,7 +1,7 @@
-package com.ssg.item.service;
+package com.ssg.item.service.promotion;
 
-import com.ssg.item.dto.PromotionDto;
-import com.ssg.item.dto.PromotionResDto;
+import com.ssg.item.dto.promotion.PromotionDto;
+import com.ssg.item.dto.promotion.PromotionResDto;
 import com.ssg.item.entity.Promotion;
 
 public interface PromotionService {

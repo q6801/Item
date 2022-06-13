@@ -1,8 +1,8 @@
 package com.ssg.item.service;
 
-import com.ssg.item.dto.ItemDto;
-import com.ssg.item.dto.ItemResDto;
-import com.ssg.item.dto.ItemWithPromotionDto;
+import com.ssg.item.dto.item.ItemDto;
+import com.ssg.item.dto.item.ItemResDto;
+import com.ssg.item.dto.item.ItemWithPromotionDto;
 import com.ssg.item.entity.Item;
 import com.ssg.item.entity.MapPromotionItem;
 import com.ssg.item.entity.Promotion;
@@ -12,6 +12,8 @@ import com.ssg.item.enums.UserStat;
 import com.ssg.item.enums.UserType;
 import com.ssg.item.exception.CustomRuntimeException;
 import com.ssg.item.repository.ItemRepository;
+import com.ssg.item.service.item.ItemServiceImpl;
+import com.ssg.item.service.user.UserService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;

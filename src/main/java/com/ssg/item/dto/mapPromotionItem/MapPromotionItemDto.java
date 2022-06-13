@@ -1,4 +1,4 @@
-package com.ssg.item.dto;
+package com.ssg.item.dto.mapPromotionItem;
 
 import lombok.Getter;
 

@@ -1,8 +1,8 @@
 package com.ssg.item.entity;
 
 
-import com.ssg.item.dto.UserDto;
-import com.ssg.item.dto.UserResDto;
+import com.ssg.item.dto.user.UserDto;
+import com.ssg.item.dto.user.UserResDto;
 import com.ssg.item.enums.UserStat;
 import com.ssg.item.enums.UserType;
 import lombok.AccessLevel;

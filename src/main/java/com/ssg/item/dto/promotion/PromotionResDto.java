@@ -1,4 +1,4 @@
-package com.ssg.item.dto;
+package com.ssg.item.dto.promotion;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

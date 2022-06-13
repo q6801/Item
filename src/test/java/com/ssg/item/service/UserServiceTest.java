@@ -1,11 +1,12 @@
 package com.ssg.item.service;
 
-import com.ssg.item.dto.UserDto;
-import com.ssg.item.dto.UserResDto;
+import com.ssg.item.dto.user.UserDto;
+import com.ssg.item.dto.user.UserResDto;
 import com.ssg.item.entity.User;
 import com.ssg.item.enums.UserStat;
 import com.ssg.item.enums.UserType;
 import com.ssg.item.repository.UserRepository;
+import com.ssg.item.service.user.UserServiceImpl;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

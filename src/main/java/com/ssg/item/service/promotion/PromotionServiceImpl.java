@@ -1,11 +1,12 @@
-package com.ssg.item.service;
+package com.ssg.item.service.promotion;
 
-import com.ssg.item.dto.PromotionDto;
-import com.ssg.item.dto.PromotionResDto;
+import com.ssg.item.dto.promotion.PromotionDto;
+import com.ssg.item.dto.promotion.PromotionResDto;
 import com.ssg.item.entity.Promotion;
 import com.ssg.item.exception.CustomRuntimeException;
 import com.ssg.item.exception.ExceptionEnum;
 import com.ssg.item.repository.PromotionRepository;
+import com.ssg.item.service.promotion.PromotionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

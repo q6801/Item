@@ -1,8 +1,8 @@
-package com.ssg.item.service;
+package com.ssg.item.service.item;
 
-import com.ssg.item.dto.ItemDto;
-import com.ssg.item.dto.ItemResDto;
-import com.ssg.item.dto.ItemWithPromotionDto;
+import com.ssg.item.dto.item.ItemDto;
+import com.ssg.item.dto.item.ItemResDto;
+import com.ssg.item.dto.item.ItemWithPromotionDto;
 import com.ssg.item.entity.Item;
 
 import java.util.List;

@@ -1,7 +1,7 @@
 package com.ssg.item.entity;
 
-import com.ssg.item.dto.PromotionDto;
-import com.ssg.item.dto.PromotionResDto;
+import com.ssg.item.dto.promotion.PromotionDto;
+import com.ssg.item.dto.promotion.PromotionResDto;
 import com.ssg.item.exception.CustomRuntimeException;
 import com.ssg.item.exception.ExceptionEnum;
 import lombok.AccessLevel;

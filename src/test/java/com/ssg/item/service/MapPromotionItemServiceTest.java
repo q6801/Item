@@ -1,12 +1,14 @@
 package com.ssg.item.service;
 
-import com.ssg.item.dto.MapPromotionItemDto;
+import com.ssg.item.dto.mapPromotionItem.MapPromotionItemDto;
 import com.ssg.item.entity.Item;
 import com.ssg.item.entity.Promotion;
 import com.ssg.item.enums.ItemType;
 import com.ssg.item.exception.CustomRuntimeException;
 import com.ssg.item.repository.ItemRepository;
 import com.ssg.item.repository.MapPromotionItemRepository;
+import com.ssg.item.service.mapPromotionItem.MapPromotionItemServiceImpl;
+import com.ssg.item.service.promotion.PromotionService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;

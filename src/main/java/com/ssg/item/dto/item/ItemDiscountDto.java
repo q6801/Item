@@ -1,4 +1,4 @@
-package com.ssg.item.dto;
+package com.ssg.item.dto.item;
 
 import com.ssg.item.enums.ItemType;
 import lombok.EqualsAndHashCode;

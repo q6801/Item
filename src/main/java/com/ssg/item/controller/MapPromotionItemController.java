@@ -2,9 +2,9 @@ package com.ssg.item.controller;
 
 import com.ssg.item.api.ApiProvider;
 import com.ssg.item.api.ApiResult;
-import com.ssg.item.dto.MapPromotionItemDto;
-import com.ssg.item.dto.PromotionResDto;
-import com.ssg.item.service.MapPromotionItemService;
+import com.ssg.item.dto.mapPromotionItem.MapPromotionItemDto;
+import com.ssg.item.dto.promotion.PromotionResDto;
+import com.ssg.item.service.mapPromotionItem.MapPromotionItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

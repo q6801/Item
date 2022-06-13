@@ -1,6 +1,6 @@
-package com.ssg.item.service;
+package com.ssg.item.service.mapPromotionItem;
 
-import com.ssg.item.dto.MapPromotionItemDto;
+import com.ssg.item.dto.mapPromotionItem.MapPromotionItemDto;
 
 public interface MapPromotionItemService {
     void setPromotionItem(MapPromotionItemDto mapPromotionItemDto);

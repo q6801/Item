@@ -1,6 +1,10 @@
-package com.ssg.item.service;
+package com.ssg.item.service.item;
 
-import com.ssg.item.dto.*;
+import com.ssg.item.dto.item.ItemDiscountDto;
+import com.ssg.item.dto.item.ItemDto;
+import com.ssg.item.dto.item.ItemResDto;
+import com.ssg.item.dto.item.ItemWithPromotionDto;
+import com.ssg.item.dto.promotion.PromotionResDto;
 import com.ssg.item.entity.Item;
 import com.ssg.item.entity.Promotion;
 import com.ssg.item.entity.MapPromotionItem;
@@ -11,6 +15,7 @@ import com.ssg.item.enums.UserType;
 import com.ssg.item.exception.CustomRuntimeException;
 import com.ssg.item.exception.ExceptionEnum;
 import com.ssg.item.repository.ItemRepository;
+import com.ssg.item.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,7 +29,7 @@ import java.util.stream.Collectors;
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
-public class ItemServiceImpl implements ItemService{
+public class ItemServiceImpl implements ItemService {
     private final ItemRepository itemRepository;
     private final UserService userService;
 

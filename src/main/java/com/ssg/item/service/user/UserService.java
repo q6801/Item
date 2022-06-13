@@ -1,7 +1,7 @@
-package com.ssg.item.service;
+package com.ssg.item.service.user;
 
-import com.ssg.item.dto.UserDto;
-import com.ssg.item.dto.UserResDto;
+import com.ssg.item.dto.user.UserDto;
+import com.ssg.item.dto.user.UserResDto;
 import com.ssg.item.entity.User;
 
 public interface UserService {
