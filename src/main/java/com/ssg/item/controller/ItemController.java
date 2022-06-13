@@ -4,7 +4,7 @@ import com.ssg.item.api.ApiProvider;
 import com.ssg.item.api.ApiResult;
 import com.ssg.item.dto.ItemDto;
 import com.ssg.item.dto.ItemResDto;
-import com.ssg.item.entity.Item;
+import com.ssg.item.dto.ItemWithPromotionDto;
 import com.ssg.item.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +22,13 @@ public class ItemController {
     public ApiResult<List<ItemResDto>> getBuyalbeItem(@PathVariable long userId) {
         List<ItemResDto> buyableItem = itemService.getBuyableItem(userId);
         return ApiProvider.success(buyableItem);
+    }
+
+    @GetMapping("item-promotion/{itemId}")
+    public ApiResult<ItemWithPromotionDto> getItemWithPromotion(@PathVariable long itemId) {
+        ItemWithPromotionDto promotionInItem = itemService.getItemWithPromotion(itemId);
+        return ApiProvider.success(promotionInItem);
+
     }
 
     @PostMapping("item")
