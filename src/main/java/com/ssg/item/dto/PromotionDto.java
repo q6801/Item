@@ -12,11 +12,11 @@ public class PromotionDto {
     @NotBlank(message = "프로모션의 이름은 빈값일 수 없습니다.")
     private String name;
 
-    @Min(value = 0, message = "할인 비용은 음수일 수 없습니다.")
+    @Min(value = 1, message = "할인 비용은 0보다 커야합니다.")
     private Integer discountAmount;
 
-    @DecimalMax(value = "1.0", message = "할인 비율은 1 이하입니다.")
-    @DecimalMin(value = "0.0", message = "할인 비율은 0 이상입니다.")
+    @DecimalMax(value = "1.0", inclusive = false, message = "할인 비율은 1 미만입니다.")
+    @DecimalMin(value = "0.0", inclusive = false, message = "할인 비율은 0 초과입니다.")
     private Float discountRate;
 
     @NotNull(message = "상품 전시 시작기간은 널값일 수 없습니다.")
